@@ -9,6 +9,17 @@
     }
 }
 
+@keyframes menuFadeOut {
+    0%{
+        height: 100%;
+        opacity: 1;
+    }
+    100%{
+        height: 0%;
+        opacity: 0;
+    }
+}
+
 @keyframes funcFadeIn {
     0%{
         height: 0%;
@@ -34,6 +45,10 @@
 
 .chueh_menu_in{
     animation: menuFadeIn 1s;
+}
+
+.chueh_menu_out{
+    animation: menuFadeOut 1s;
 }
 
 .chueh_func_in{
