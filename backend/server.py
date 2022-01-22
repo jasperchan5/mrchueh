@@ -4,7 +4,7 @@ from markupsafe import string
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-from crawler import *
+import crawler
 
 app = FastAPI()
 
@@ -23,28 +23,28 @@ app.add_middleware(
 
 @app.get("/Covid")
 def getCovidInfo():
-    covidBot = covid19()
+    covidBot = crawler.covid19()
     res = covidBot.getDailyInfo()
     print(res)
     return res 
 
 @app.post("/Tag/")
 def getTagInfo(inputStr):
-    tagBot = tagSearcher(inputStr)
+    tagBot = crawler.tagSearcher(inputStr)
     res = tagBot.searchDoujin()
     print(res)
     return res
 
 @app.post("/GodLanguage/")
 def getTagInfo(num):
-    hentaiBot = nHentaiSearcher(num)
+    hentaiBot = crawler.nHentaiSearcher(num)
     res = hentaiBot.searchTitle()
     print(res)
     return res
 
 @app.post("/NormalImage")
 def getImage(mode,num):
-    imageBot = imageSearcher(mode,num)
+    imageBot = crawler.imageSearcher(mode,num)
     res = imageBot.getNormalImage()
     print(res)
     return res
