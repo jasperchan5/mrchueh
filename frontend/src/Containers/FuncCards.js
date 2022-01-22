@@ -31,22 +31,23 @@ const Text = styled.div`
 `
 
 const Cards = () => {
+
     const Covid = ({fadeIn}) => {
-        // const [covidData, setCovidData] = useState([]);
-        // const FetchCovid = async () => {
-        //     let res = await axios.get("http://127.0.0.1:8000/Covid");
-        //     let result = res.data;
-        //     setCovidData(result);
-        // }
-        // const loading = () => {
-        //     return(message.loading("Loading..."));
-        // }
-        // useEffect(async () => {
-        //     if(covidData !== []) loading();
-        //     await FetchCovid();
-        // }, [])
+        const [covidData, setCovidData] = useState([]);
+        const FetchCovid = async () => {
+            let res = await axios.get("http://127.0.0.1:8000/Covid");
+            let result = res.data;
+            setCovidData(result);
+        }
+        const loading = () => {
+            return(message.loading("Loading..."));
+        }
+        useEffect(async () => {
+            if(covidData !== []) loading();
+            await FetchCovid();
+        }, [])
         return(<Card className={fadeIn} style={{height: "500px"}} title={<Title>每日疫情資訊</Title>}>
-            {/* <Row align="center">
+            <Row align="center">
                 <div style={{fontSize:"1cm"}}>
                     {covidData[0]}
                 </div>
@@ -57,7 +58,7 @@ const Cards = () => {
                         <Text>{e.split("：")[1]}</Text>
                     </Card>
                 </Col>)}
-            </Row> */}
+            </Row>
         </Card>)
     }
 
@@ -108,7 +109,7 @@ const Cards = () => {
         )
     }
 
-    return { Covid, HentaiRecommend, ImageRecommend, TicTacToe, Solitaire }
+    return { Covid, HentaiRecommend, ImageRecommend, TicTacToe, Solitaire };
 }
 
 

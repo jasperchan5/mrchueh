@@ -5,3 +5,9 @@ bs4
 pyquery
 numpy
 pymongo
+uvicorn
+typing
+fastapi
+markupsafe
+pydantic
+fastapi.middleware.cors
