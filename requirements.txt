@@ -5,6 +5,4 @@ bs4
 pyquery
 numpy
 pymongo
-dnspython
-selenium
 time
