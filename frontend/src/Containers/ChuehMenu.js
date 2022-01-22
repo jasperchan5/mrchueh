@@ -13,7 +13,7 @@ export default ({menuSize, handleFuncs}) => {
     return(
         <Menu mode="inline" style={{width: menuSize[0], height: menuSize[1]}} className="chueh_menu_in">
             {funcList.map((func,index) => 
-                <Menu.Item style={{height: "17.5%", background: "linear-gradient(#ffffff 0%, #f7f7f7 100%)"}} onClick={() => handleFuncs(index, func.eng)}>
+                <Menu.Item key={index} style={{height: "17.5%", background: "linear-gradient(#ffffff 0%, #f7f7f7 100%)"}} onClick={() => handleFuncs(index, func.eng)}>
                     <Row align="center" justify="start">
                     <Col md={22} style={{textAlign: "center"}}>{func.zh}</Col>
                     <Col md={2}><DoubleRightOutlined/></Col>

@@ -8,7 +8,6 @@ import ChuehMenu from "./ChuehMenu";
 
 import "../../node_modules/antd/dist/antd.css"
 import "./Chueh.css"
-import styled from "styled-components";
 
 function MainPage() {
   const [menuPressed, setMenuPressed] = useState(false);
@@ -50,16 +49,16 @@ function MainPage() {
       }
     }
   }
-
+  
   return (
     <>
       <Header style={{backgroundColor: "#434343", height: "100px"}}>
-       <Row>
-           <Space size={10} style={{marginTop: "15px"}}>
-             <Avatar size={64} src="https://imgur.com/ew2Qlci.png"></Avatar>
-             <div style={{fontSize: "1cm", color: "#ffffff", fontWeight: "bold"}}>Mr.Chueh</div>
-           </Space>
-       </Row>
+        <Row>
+            <Space size={10} style={{marginTop: "15px"}}>
+              <Avatar size={64} src="https://imgur.com/ew2Qlci.png"></Avatar>
+              <div style={{fontSize: "1cm", color: "#ffffff", fontWeight: "bold"}}>Mr.Chueh</div>
+            </Space>
+        </Row>
      </Header>
       <Content style={{height: "450px", background: "#f5f5f5"}}>
         <Row>
@@ -70,15 +69,15 @@ function MainPage() {
             </div>
           </Col>
           <Col md={18}>
-            {funcName === "Solitaire" ? (menuPressed ? (alreadyOpen[0] ? <Solitaire fadeIn={"chueh_func_in"}></Solitaire> : <Solitaire></Solitaire>) : <Solitaire></Solitaire>)  : <></>}
-            {funcName === "TicTacToe" ? (menuPressed ? (alreadyOpen[1] ? <TicTacToe fadeIn={"chueh_func_in"}></TicTacToe> : <TicTacToe></TicTacToe>) : <TicTacToe></TicTacToe>) : <></>}
-            {funcName === "Hentai" ? (menuPressed ? (alreadyOpen[2] ? <HentaiRecommend fadeIn={"chueh_func_in"}></HentaiRecommend> : <HentaiRecommend></HentaiRecommend>) : <HentaiRecommend></HentaiRecommend>) : <></>}
-            {funcName === "Image" ? (menuPressed ? (alreadyOpen[3] ? <ImageRecommend fadeIn={"chueh_func_in"}></ImageRecommend> : <ImageRecommend></ImageRecommend>) : <ImageRecommend></ImageRecommend>) : <></>}
-            {funcName === "Covid" ? (menuPressed ? (alreadyOpen[4] ? <Covid fadeIn={"chueh_func_in"}></Covid> : <Covid></Covid>) : <Covid></Covid>) : <></>}
+            {funcName === "Solitaire" ? (menuPressed ? (alreadyOpen[0] ? <Solitaire fadeIn={"chueh_func_in"}></Solitaire> : <Solitaire fadeIn={""}></Solitaire>) : <Solitaire fadeIn={""}></Solitaire>)  : <></>}
+            {funcName === "TicTacToe" ? (menuPressed ? (alreadyOpen[1] ? <TicTacToe fadeIn={"chueh_func_in"}></TicTacToe> : <TicTacToe fadeIn={""}></TicTacToe>) : <TicTacToe fadeIn={""}></TicTacToe>) : <></>}
+            {funcName === "Hentai" ? (menuPressed ? (alreadyOpen[2] ? <HentaiRecommend fadeIn={"chueh_func_in"}></HentaiRecommend> : <HentaiRecommend fadeIn={""}></HentaiRecommend>) : <HentaiRecommend fadeIn={""}></HentaiRecommend>) : <></>}
+            {funcName === "Image" ? (menuPressed ? (alreadyOpen[3] ? <ImageRecommend fadeIn={"chueh_func_in"}></ImageRecommend> : <ImageRecommend fadeIn={""}></ImageRecommend>) : <ImageRecommend fadeIn={""}></ImageRecommend>) : <></>}
+            {funcName === "Covid" ? (menuPressed ? (alreadyOpen[4] ? <Covid fadeIn={"chueh_func_in"}></Covid> : <Covid fadeIn={""}></Covid>) : <Covid fadeIn={""}></Covid>) : <></>}
           </Col>
         </Row>
       </Content>
-      <Footer style={{background: "#ffffff"}}>
+      <Footer style={{background: "#f5f5f5"}}>
 
       </Footer>
     </>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "cd frontend && yarn start"
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && uvicorn server:app --reload"
   }
 }
