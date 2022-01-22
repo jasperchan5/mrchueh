@@ -1,0 +1,10 @@
+line-bot-sdk
+flask
+requests
+bs4
+pyquery
+numpy
+pymongo
+dnspython
+selenium
+time
