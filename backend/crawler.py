@@ -13,10 +13,10 @@ class nHentaiSearcher:
     def __init__(self,num):
         self.__target = requests.get("https://nhentai.net/g/"+num)
         self.__num = num
-        self.__tempStr = ""
+        self.__tempArr = []
     def searchTitle(self):
         if self.__target.status_code != 200:
-            return self.__num + "\n哭啊，查無此本！"
+            return self.__num + "哭啊，查無此本！"
         else: 
             page = BeautifulSoup(self.__target.text,"html.parser")
             title = page.find("h2","title").text
@@ -26,11 +26,11 @@ class nHentaiSearcher:
                 tags.append("[" + i.text + "]")
             return self.processInfo(title,tags)
     def processInfo(self,title,tags):
-        self.__tempStr += self.__num
-        self.__tempStr += " " + title
+        self.__tempArr.append(self.__num)
+        self.__tempArr.append(title)
         for i in tags:
-            self.__tempStr += " " + i
-        return self.__tempStr
+            self.__tempArr.append(i)
+        return self.__tempArr
 
 class tagSearcher:
     def __init__(self,inputStr):
@@ -38,27 +38,30 @@ class tagSearcher:
         self.__tag = inputStr
         self.__tempStr = ""
     def searchDoujin(self):
-        page = BeautifulSoup(self.__target.text,"html.parser")
-    
-        # 處理本子總數
-        totalStr = page.find("h1").text
-        quantity = totalStr.split(" ")[1]
-        doujinNum = ""
-        for i in quantity:
-            if i != ',':
-                doujinNum += i
+        try:
+            page = BeautifulSoup(self.__target.text,"html.parser")
+        
+            # 處理本子總數
+            totalStr = page.find("h1").text
+            quantity = totalStr.split(" ")[1]
+            doujinNum = ""
+            for i in quantity:
+                if i != ',':
+                    doujinNum += i
 
-        # 總頁數
-        totalPageNum = int(int(doujinNum) / 25) + 1
-        pageNum = rd.randint(1,int(totalPageNum))
-        titles = page.find_all("div","caption")
-        # print(len(titles))
-        randNum = rd.randint(0,len(titles) - 1)
-        self.__target = requests.get("https://nhentai.net/search/?q=" + self.__tag + "&page=" + str(pageNum))
-        page = BeautifulSoup(self.__target.text,"html.parser")
-        link = page.find_all('a', href=True)[23 + randNum]
-        self.__tempStr += "https://nhentai.net" + link['href']
-        return self.__tempStr
+            # 總頁數
+            totalPageNum = int(int(doujinNum) / 25) + 1
+            pageNum = rd.randint(1,int(totalPageNum))
+            titles = page.find_all("div","caption")
+            # print(len(titles))
+            randNum = rd.randint(0,len(titles) - 1)
+            self.__target = requests.get("https://nhentai.net/search/?q=" + self.__tag + "&page=" + str(pageNum))
+            page = BeautifulSoup(self.__target.text,"html.parser")
+            link = page.find_all('a', href=True)[23 + randNum]
+            self.__tempStr += "https://nhentai.net" + link['href']
+            return self.__tempStr
+        except:
+            return "哭啊，查無此本！"
 
 class imageSearcher:
     def __init__(self,mode,crawlNum):

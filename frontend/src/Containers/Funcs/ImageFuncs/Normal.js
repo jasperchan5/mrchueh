@@ -1,13 +1,9 @@
-import { useState, useEffect } from "react";
-import { Card, Input, Row, Tabs, Tag, Col, message, Image } from "antd";
+import { useState } from "react";
+import {  message } from "antd";
 import axios from "axios";
-import styled from "styled-components"
+import ChuehStyledComp from "../../Styles/ChuehStyledComp";
 
-const Text = styled.div`
-    text-align: center;
-    font-size: 0.5cm;
-    color: #114514;
-`
+const { ChuehSearch } = ChuehStyledComp();
 
 export default () => {
     const [imageNum, setImageNum] = useState("");
@@ -28,7 +24,7 @@ export default () => {
     
     return(
         <>
-            <Input.Search value={imageNum} onChange={(e) => setImageNum(e.target.value)} onSearch={() => handleOnSearch(parseInt(imageNum))}></Input.Search>
+            <ChuehSearch value={imageNum} onChange={(e) => setImageNum(e.target.value)} onSearch={() => handleOnSearch(parseInt(imageNum))}></ChuehSearch>
             {imageNum !== "" 
             ? images.map((e) => <li><a href={e}>{e}</a></li>)
             : <></> }

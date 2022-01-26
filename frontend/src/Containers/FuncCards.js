@@ -1,64 +1,18 @@
-import "./Chueh.css"
-import { Card, Input, Row, Tabs, Tag, Col, message } from "antd";
-import styled, { keyframes } from "styled-components"
-import ChatBox from "./SolitaireFuncs/ChatBox";
-import { useState, useEffect } from "react";
-import Board from "./TicTacToeFuncs.js/Board";
-import axios from "axios";
+import { Card, Row } from "antd";
+import { useState } from "react";
 
-import "./Chueh.css"
-import Tags from "./HentaiFuncs/Tags";
-import GodLanguage from "./HentaiFuncs/GodLanguage";
-import Normal from "./ImageFuncs/Normal";
-
-
-const Title = styled.div`
-    text-align: center;
-    font-size: 0.6cm;
-    font-weight: 600;
-`;
-
-const fade_in = keyframes`
-    0%: {opacity: 0};
-    100%: {opacity: 1};
-`
-
-const Text = styled.div`
-    text-align: center;
-    font-size: 2.5cm;
-    color: #1890ff;
-    animation: ${fade_in} 1s;
-`
+import "./Styles/Chueh.css"
+import { Tags, GodLanguage, Normal, CovidInfo, Board, ChatBox } from "./Funcs/FuncsIndex";
+import ChuehStyledComp from "./Styles/ChuehStyledComp"; 
+ 
+const { ChuehTitle } = ChuehStyledComp();
 
 const Cards = () => {
 
     const Covid = ({fadeIn}) => {
-        const [covidData, setCovidData] = useState([]);
-        const FetchCovid = async () => {
-            let res = await axios.get("http://127.0.0.1:8000/Covid");
-            let result = res.data;
-            setCovidData(result);
-        }
-        const loading = () => {
-            return(message.loading("Loading..."));
-        }
-        useEffect(async () => {
-            if(covidData !== []) loading();
-            await FetchCovid();
-        }, [])
-        return(<Card className={fadeIn} style={{height: "500px"}} title={<Title>每日疫情資訊</Title>}>
-            <Row align="center">
-                <div style={{fontSize:"1cm"}}>
-                    {covidData[0]}
-                </div>
-            </Row>
-            <Row>
-                {covidData.slice(1,4).map((e) => <Col md={8}>
-                    <Card title={<Title>{e.split("：")[0]}</Title>} style={{height: "350px"}}>
-                        <Text>{e.split("：")[1]}</Text>
-                    </Card>
-                </Col>)}
-            </Row>
+        
+        return(<Card className={fadeIn} style={{height: "500px"}} title={<ChuehTitle>每日疫情資訊</ChuehTitle>}>
+            <CovidInfo></CovidInfo>
         </Card>)
     }
 
@@ -74,7 +28,7 @@ const Cards = () => {
         },{
             key: "1", tab: "神之語言"
         }]
-        return <Card className={fadeIn} style={{height: "800px"}} title={<Title>推本子</Title>} tabList={tabList} onTabChange={(e) => handleTabClick(e)}>
+        return <Card className={fadeIn} style={{height: "800px"}} title={<ChuehTitle>推本子</ChuehTitle>} tabList={tabList} onTabChange={(e) => handleTabClick(e)}>
             {currentTab === "0" ? <Tags></Tags> : <GodLanguage></GodLanguage>}
         </Card>
     } 
@@ -85,14 +39,14 @@ const Cards = () => {
         },{
             key: "2", tab: "可以色色"
         }]
-        return <Card className={fadeIn} style={{height: "800px"}} title={<Title>推圖</Title>} tabList={tabList}>
+        return <Card className={fadeIn} style={{height: "800px"}} title={<ChuehTitle>推圖</ChuehTitle>} tabList={tabList}>
             <Normal></Normal>
         </Card> 
     } 
 
     const Solitaire = ({fadeIn}) =>{
         return(
-            <Card className={fadeIn} style={{height: "800px"}} title={<Title>接龍</Title>}>
+            <Card className={fadeIn} style={{height: "800px"}} title={<ChuehTitle>接龍</ChuehTitle>}>
                 {"你好"}
                 <ChatBox></ChatBox>
             </Card>
@@ -101,7 +55,7 @@ const Cards = () => {
 
     const TicTacToe = ({fadeIn}) => {
         return(
-            <Card className={fadeIn} style={{height: "500px"}} title={<Title>井字遊戲</Title>}>
+            <Card className={fadeIn} style={{height: "500px"}} title={<ChuehTitle>井字遊戲</ChuehTitle>}>
                 <Row>
                     <Board></Board>
                 </Row>

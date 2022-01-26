@@ -1,3 +1,4 @@
+import random
 from typing import Optional
 from fastapi import FastAPI
 from markupsafe import string
@@ -21,7 +22,7 @@ app.add_middleware(
 )
 
 
-@app.get("/Covid")
+@app.get("/Covid/")
 def getCovidInfo():
     covidBot = crawler.covid19()
     res = covidBot.getDailyInfo()
@@ -36,13 +37,14 @@ def getTagInfo(inputStr):
     return res
 
 @app.post("/GodLanguage/")
-def getTagInfo(num):
+def getHentaiInfo(num):
+    print(num)
     hentaiBot = crawler.nHentaiSearcher(num)
     res = hentaiBot.searchTitle()
     print(res)
     return res
 
-@app.post("/NormalImage")
+@app.post("/NormalImage/")
 def getImage(mode,num):
     imageBot = crawler.imageSearcher(mode,num)
     res = imageBot.getNormalImage()
