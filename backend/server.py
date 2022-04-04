@@ -28,25 +28,3 @@ def getCovidInfo():
     res = covidBot.getDailyInfo()
     print(res)
     return res 
-
-@app.post("/Tag/")
-def getTagInfo(inputStr):
-    tagBot = crawler.tagSearcher(inputStr)
-    res = tagBot.searchDoujin()
-    print(res)
-    return res
-
-@app.post("/GodLanguage/")
-def getHentaiInfo(num):
-    print(num)
-    hentaiBot = crawler.nHentaiSearcher(num)
-    res = hentaiBot.searchTitle()
-    print(res)
-    return res
-
-@app.post("/NormalImage/")
-def getImage(mode,num):
-    imageBot = crawler.imageSearcher(mode,num)
-    res = imageBot.getNormalImage()
-    print(res)
-    return res

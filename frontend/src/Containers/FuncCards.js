@@ -16,34 +16,6 @@ const Cards = () => {
         </Card>)
     }
 
-    const HentaiRecommend = ({fadeIn}) => {
-        const [currentTab, setCurrentTab] = useState("0");
-        
-        const handleTabClick = (e) => {
-            setCurrentTab(e);
-        }
-        
-        const tabList = [{
-            key: "0", tab: "找本子"
-        },{
-            key: "1", tab: "神之語言"
-        }]
-        return <Card className={fadeIn} style={{height: "800px"}} title={<ChuehTitle>推本子</ChuehTitle>} tabList={tabList} onTabChange={(e) => handleTabClick(e)}>
-            {currentTab === "0" ? <Tags></Tags> : <GodLanguage></GodLanguage>}
-        </Card>
-    } 
-
-    const ImageRecommend = ({fadeIn}) =>{
-        const tabList = [{
-            key: "1", tab: "不可以色色"
-        },{
-            key: "2", tab: "可以色色"
-        }]
-        return <Card className={fadeIn} style={{height: "800px"}} title={<ChuehTitle>推圖</ChuehTitle>} tabList={tabList}>
-            <Normal></Normal>
-        </Card> 
-    } 
-
     const Solitaire = ({fadeIn}) =>{
         return(
             <Card className={fadeIn} style={{height: "800px"}} title={<ChuehTitle>接龍</ChuehTitle>}>
@@ -63,7 +35,7 @@ const Cards = () => {
         )
     }
 
-    return { Covid, HentaiRecommend, ImageRecommend, TicTacToe, Solitaire };
+    return { Covid, TicTacToe, Solitaire };
 }
 
 

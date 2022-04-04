@@ -14,7 +14,7 @@ function MainPage() {
   const [alreadyOpen, setAlreadyOpen] = useState([false,false,false,false,false]);
   const [menuSize, setMenuSize] = useState([0,0]);
   const [funcName, setFuncName] = useState("");
-  const { Covid, HentaiRecommend, ImageRecommend, Solitaire, TicTacToe } = Cards();
+  const { Covid, Solitaire, TicTacToe } = Cards();
 
   useEffect(() => {
     console.log(alreadyOpen);
@@ -75,8 +75,6 @@ function MainPage() {
           <Col md={18}>
             {funcName === "Solitaire" ? (menuPressed ? (alreadyOpen[0] ? <Solitaire fadeIn={"chueh_func_in"}></Solitaire> : <Solitaire fadeIn={""}></Solitaire>) : <Solitaire fadeIn={""}></Solitaire>)  : <></>}
             {funcName === "TicTacToe" ? (menuPressed ? (alreadyOpen[1] ? <TicTacToe fadeIn={"chueh_func_in"}></TicTacToe> : <TicTacToe fadeIn={""}></TicTacToe>) : <TicTacToe fadeIn={""}></TicTacToe>) : <></>}
-            {funcName === "Hentai" ? (menuPressed ? (alreadyOpen[2] ? <HentaiRecommend fadeIn={"chueh_func_in"}></HentaiRecommend> : <HentaiRecommend fadeIn={""}></HentaiRecommend>) : <HentaiRecommend fadeIn={""}></HentaiRecommend>) : <></>}
-            {funcName === "Image" ? (menuPressed ? (alreadyOpen[3] ? <ImageRecommend fadeIn={"chueh_func_in"}></ImageRecommend> : <ImageRecommend fadeIn={""}></ImageRecommend>) : <ImageRecommend fadeIn={""}></ImageRecommend>) : <></>}
             {funcName === "Covid" ? (menuPressed ? (alreadyOpen[5] ? <Covid fadeIn={"chueh_func_in"}></Covid> : <Covid fadeIn={""}></Covid>) : <Covid fadeIn={""}></Covid>) : <></>}
           </Col>
         </Row>

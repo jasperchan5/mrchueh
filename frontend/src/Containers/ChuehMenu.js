@@ -5,8 +5,6 @@ export default ({menuSize, handleFuncs}) => {
     const funcList = [
         { eng: "Solitaire", zh: "接龍" },
         { eng: "TicTacToe", zh: "井字遊戲" },
-        { eng: "Hentai", zh: "推本子" },
-        { eng: "Image", zh: "推圖" },
         { eng: "Eat", zh: "吃什麼" },
         { eng: "Covid", zh: "每日疫情資訊" }
     ]
